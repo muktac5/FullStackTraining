@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>CRUD operations</title>
+<script type="text/javascript" src="crud_script(1).js"></script>
+<style>
+  body{
+  margin: 30px;
+}
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: #630000;
+  background-color: #EEEBDD;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+.search-input{
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  width: 15%;
+  border-radius: 5px;
+}
+.spaceage{
+  width: 15%;
+  display: inline-block;
+}
+tr input[type="text"]{
+  font-size: 16px;
+  padding: 6px 0 6px 0;
+}
+tr input[type="button"]{
+  background-color: blue;
+  color: white;
+  border: none;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+tr input[type="button"]:hover{
+  background-color: rgba(0,0,255,0.5);
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+  <script>
+    function myFunction(j) {  //this function is for all the searchboxes
+      var input, filter, table, tr, td, i, txtValue;
+      if(j=0)
+      {
+        input = document.getElementById("myInput");
+      }
+      if(j=1)
+      {
+        input = document.getElementById("myInput1");
+      }
+      if(j=2)
+      {
+        input = document.getElementById("myInput2");
+      }
+      if(j=4)
+      {
+        input = document.getElementById("myInput3");
+      }
+      if(j=5)
+      {
+        input = document.getElementById("myInput4");
+      }
+      filter = input.value.toUpperCase();
+      table = document.getElementById("data_table");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[j];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+      console.log(j);
+    }
+    </script>
+    <input type="text" id="myInput" onkeyup="myFunction(0)" placeholder="Search for Emp Id.." title="Type in an id" class="search-input">
+    <input type="text" id="myInput1" onkeyup="myFunction(1)" placeholder="Search for Name.." title="Type in a name" class="search-input">
+    <input type="text" id="myInput2" onkeyup="myFunction(2)" placeholder="Search for country.." title="Type in a country" class="search-input">
+    <input type="text" id="myInput3" onkeyup="myFunction(4)" placeholder="Search for uni.." title="Type in a uni" class="search-input">
+    <input type="text" id="myInput4" onkeyup="myFunction(5)" placeholder="Search for Qualification.." title="Type in a name" class="search-input">
+
+<div id="wrapper">
+<table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
+<tr>
+<th>EMP ID</th>
+<th>Name</th>
+<th>Country</th>
+<th>Age</th>
+<th>University</th>
+<th>Highest Qualification</th>
+</tr>
+
+<tr>
+<td><input type="text" id="new_empid"></td>
+<td><input type="text" id="new_name"></td>
+<td><input type="text" id="new_country"></td>
+<td><input type="text" id="new_age"></td>
+<td><input type="text" id="new_uni"></td>
+<td><input type="text" id="new_highq"></td>
+<td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
+</tr>
+
+</table>
+</div>
+
+</body>
+</html>
